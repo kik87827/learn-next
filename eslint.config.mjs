@@ -1,31 +1,31 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
-import prettierRecommended from 'eslint-plugin-prettier/recommended';
+import prettierPlugin from 'eslint-plugin-prettier';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default defineConfig([
-	...nextVitals,
-	prettierRecommended,
-	{
-		rules: {
-			'no-undef': 'error',
-			// 프리티어 설정
-			'prettier/prettier': [
-				'error',
-				// 아래 규칙들은 개인 선호에 따라 prettier 문법 적용
-				// https://prettier.io/docs/en/options.html
-				{
-					singleQuote: true,
-					semi: true,
-					useTabs: true,
-					tabWidth: 2,
-					trailingComma: 'all',
-					printWidth: 80,
-					bracketSpacing: true,
-					arrowParens: 'avoid',
-				},
-			],
-		},
-	},
-
-	globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
+  ...nextVitals,
+  eslintConfigPrettier,
+  {
+    plugins: {
+      prettier: prettierPlugin,
+    },
+    rules: {
+      'no-undef': 'error',
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          semi: true,
+          useTabs: false,
+          tabWidth: 2,
+          trailingComma: 'all',
+          printWidth: 12000,
+          bracketSpacing: true,
+          arrowParens: 'avoid',
+        },
+      ],
+    },
+  },
+  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
 ]);
