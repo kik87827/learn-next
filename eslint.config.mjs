@@ -2,6 +2,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import prettierPlugin from 'eslint-plugin-prettier';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 export default defineConfig([
   ...nextVitals,
@@ -9,9 +10,11 @@ export default defineConfig([
   {
     plugins: {
       prettier: prettierPlugin,
+      'unused-imports': unusedImports,
     },
     rules: {
       'no-undef': 'error',
+      'unused-imports/no-unused-imports': 'error',
       'prettier/prettier': [
         'error',
         {
