@@ -26,6 +26,7 @@ export default defineConfig([
           printWidth: 12000,
           bracketSpacing: true,
           arrowParens: 'avoid',
+          endOfLine: 'auto',
         },
       ],
     },
